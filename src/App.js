@@ -28,12 +28,12 @@ function App() {
 
         <div className="flex flex-1">
           {/* Sidebar */}
-          <aside className={`bg-gray-50 -mr-1 w-64 p-4 ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
+          <aside  className={`bg-gray-50 shadow-xl w-64 p-4 absolute top-0 left-0 h-full transform transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0`}>
             <ul className="sidebar">
               {['Dashboard', 'Job Notification'].map((item) => (
                 <li
                   key={item}
-                  className={`py-2 px-3 ${activeItem === item ? 'bg-blue-500 rounded-lg items-center text-white' : 'hover:bg-gray-200 hover:text-blue-500'
+                  className={`py-2 px-3 ${activeItem === item ? 'bg-blue-500 rounded-lg items-center text-white' : 'hover:bg-gray-200 hover:text-blue-500 my-2 mt-2'
                     }`}
                   onClick={() => handleItemClick(item)}
                 >
