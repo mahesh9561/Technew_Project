@@ -6,8 +6,8 @@ function Containt({ onNavigate, activeIndex }) { // Accept activeIndex as a prop
   };
 
   return (
-    <div className="flex items-center justify-start gap-10 bg-white p-4 shadow-md rounded-md">
-      {['Basic Details', 'Contact Details', 'Academic Details', 'Interview Rounds & Ratings'].map((text, index) => (
+    <div className="flex items-center justify-start gap-5 bg-white p-4 shadow-md rounded-md">
+      {['Basic Details', 'Contact Details', 'Academic Details', 'Interview Rounds'].map((text, index) => (
         <div
           key={index}
           className={`text-gray-600 cursor-pointer relative font-semibold pb-2 ${activeIndex === index ? 'text-blue-600' : ''}`}

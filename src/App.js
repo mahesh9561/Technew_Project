@@ -44,7 +44,7 @@ function App() {
           </aside>
 
           {/* Main Content */}
-          <main className="flex-1 p-4">
+          <main className="flex-1 p-4 sm:">
             <Containt onNavigate={handleNavigation} activeIndex={activeComponent} /> {/* Pass activeIndex to Containt */}
             {activeComponent === 0 && <Basics />}
             {activeComponent === 1 && <Contact />}

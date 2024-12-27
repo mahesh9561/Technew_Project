@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
     return (
         <div>
-            <aside className={`bg-gray-200 w-64 p-4 ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
+            {/* Sidebar */}
+            <aside
+                className={`absolute top-0 left-0 h-full w-64 bg-gray-200 p-4 shadow-lg z-50 transition-transform duration-300 ${
+                    isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                }`}
+            >
                 <div className="flex flex-col items-center gap-4">
-                    <div className="bg-gray-200 p-2 rounded-lg">
+                    {/* Dashboard */}
+                    <div className="bg-gray-200 p-2 rounded-lg flex items-center">
                         <span className="text-gray-600">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -22,11 +28,12 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                                 />
                             </svg>
                         </span>
-                        <span className="text-gray-700 font-medium">Dashboard</span>
+                        <span className="text-gray-700 font-medium ml-2">Dashboard</span>
                     </div>
 
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        <span className="text-white">
+                    {/* Job Notification */}
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+                        <span>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-6 w-6"
@@ -42,13 +49,20 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                                 />
                             </svg>
                         </span>
-                        <span className="text-white ml-2">Job Notification</span>
+                        <span className="ml-2">Job Notification</span>
                     </button>
                 </div>
             </aside>
 
+            {/* Overlay for mobile view */}
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-40"
+                    onClick={() => setIsSidebarOpen(false)}
+                ></div>
+            )}
         </div>
-    )
+    );
 }
 
-export default Sidebar
+export default Sidebar;
