@@ -8,14 +8,15 @@ import Contact from './pages/Contact';
 import Academic from './pages/Academic';
 import Interview from './pages/Interview';
 
-
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [activeComponent, setActiveComponent] = useState(0); 
+  const [activeComponent, setActiveComponent] = useState(0);
   const [activeItem, setActiveItem] = useState('');
+
   const handleNavigation = (index) => {
     setActiveComponent(index);
   };
+
   const handleItemClick = (item) => {
     setActiveItem(item);
   };
@@ -26,15 +27,16 @@ function App() {
         {/* Header */}
         <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
-        <div className="flex flex-1">
+        <div className="flex flex-1 relative">
           {/* Sidebar */}
-          <aside className={`bg-gray-200 w-64 p-4 ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
+          <aside
+            className={`bg-gray-50 shadow-xl w-64 p-4 absolute top-0 left-0 h-full transform transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0`}
+          >
             <ul className="sidebar">
               {['Dashboard', 'Job Notification'].map((item) => (
                 <li
                   key={item}
-                  className={`py-2 px-3 ${activeItem === item ? 'bg-blue-500 rounded-lg items-center text-white' : 'hover:bg-gray-200 hover:text-blue-500'
-                    }`}
+                  className={`py-2 px-3 ${activeItem === item ? 'bg-blue-500 rounded-lg text-white' : 'hover:bg-gray-200 hover:text-blue-500'}`}
                   onClick={() => handleItemClick(item)}
                 >
                   <a href="#">{item}</a>
@@ -44,8 +46,8 @@ function App() {
           </aside>
 
           {/* Main Content */}
-          <main className="flex-1 p-4 sm:">
-            <Containt onNavigate={handleNavigation} activeIndex={activeComponent} /> {/* Pass activeIndex to Containt */}
+          <main className="flex-1 p-4 sm:ml-64">
+            <Containt onNavigate={handleNavigation} activeIndex={activeComponent} />
             {activeComponent === 0 && <Basics />}
             {activeComponent === 1 && <Contact />}
             {activeComponent === 2 && <Academic />}

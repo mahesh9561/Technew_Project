@@ -6,11 +6,11 @@ function Containt({ onNavigate, activeIndex }) { // Accept activeIndex as a prop
   };
 
   return (
-    <div className="flex items-center justify-start gap-5 bg-white p-4 shadow-md rounded-md">
+    <div className="flex items-center justify-start gap-5 bg-white p-4 shadow-md rounded-md h-[100%">
       {['Basic Details', 'Contact Details', 'Academic Details', 'Interview Rounds'].map((text, index) => (
         <div
           key={index}
-          className={`text-gray-600 cursor-pointer relative font-semibold pb-2 ${activeIndex === index ? 'text-blue-600' : ''}`}
+          className={`text-gray-600 cursor-pointer font-semibold pb-2 ${activeIndex === index ? 'text-blue-600' : ''}`}
           onClick={() => handleClick(index)}
         >
           {text}
